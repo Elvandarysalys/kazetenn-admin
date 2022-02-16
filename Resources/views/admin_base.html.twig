@@ -9,49 +9,59 @@
         {% endblock %}
 
         {% block javascripts %}
-            <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
-            <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
-            {#            <script src="../../assets/js/admin/admin.js" defer></script>#}
-            {# {{ encore_entry_script_tags('app') }} #}
         {% endblock %}
 
         {% trans_default_domain 'kazetenn_admin' %}
     </head>
-    <body>
-        <div id="main" class="main_container">
 
-            <aside id="nav-side" class="page_nav">
-                {% block nav_side %}
-                    {{ include('@Kazetenn/admin/admin_menu.html.twig') }}
-                {% endblock %}
-            </aside>
+    <body class="page-columns">
+        <nav id="nav-top" class="navbar admin-navbar is-white" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand admin-navbar-brand">
+                <a class="navbar-item has-text-centered" href="{{ path('kazetenn_admin_admin_index') }}" style="width: 100%;">
+                    Kazetenn
+                </a>
 
-            <div id="page-container" class="page_container">
-                <div id="page-content" class="page_content">
-                    <nav id="nav-top" class="page_header">
-                        {% block nav_top %}
-                            <p>
-                                je suis une navbar top
-                            </p>
+                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenuTop">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+            <div class="navbar-menu" id="navbarMenuTop">
+                <div class="navbar-end">
+                    {% block nav_top %}
+                        {{ include('@KazetennAdmin/admin_menu_top.html.twig') }}
+                    {% endblock %}
+                </div>
+            </div>
+        </nav>
+
+        <section id="page-container" class="section admin-page-container">
+            <div id="page-content" class="columns container is-full admin-page-content">
+                <div class="column is-2 aside_container">
+                    <aside id="nav-side" class="menu is-hidden-mobile ">
+                        {% block nav_side %}
+                            {{ include('@KazetennAdmin/admin_menu.html.twig') }}
                         {% endblock %}
-                    </nav>
+                    </aside>
+                </div>
 
-                    <div  class="page_body">
-                        <div id="body" class="body_container">
-                            {% block body %}
-                            {% endblock %}
-                        </div>
-                    </div>
+                <div class="column is-10 admin-body_container">
+                    <span class="is-hidden">{% block body_hidden_infos %}{% endblock %}</span>
 
-                    <div id="footer" class="page_footer">
-                        {% block footer %}
-                            <p>
-                                Je suis un footer
-                            </p>
-                        {% endblock %}
+                    <div id="body" class="section">
+                        {% block body %}{% endblock %}
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
+
+        <footer class="footer admin-footer">
+            <div class="content has-text-centered">
+                <p>
+                    {% trans %}kazetenn_admin_interface.footer.text{% endtrans %}
+                </p>
+            </div>
+        </footer>
     </body>
 </html>

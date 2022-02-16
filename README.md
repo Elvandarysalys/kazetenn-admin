@@ -1,31 +1,88 @@
-#Kazetenn
+# kazetenn-pages
 
-#What is Kaztenn ?
-Kazetenn is a Symfony 5 bundle that aims to provide a quick CMS functionality while still getting symfony's power.
-#Why ?
-- I don't like WordPress and Drupal
-- It is a fun pet project to have
-#How to use it ?
-Create a symfony project (full or skeleton, it doesn't matter) and use : 
+## Description
+Kazetenn Pages is a symfony bundle that allow you to handle basic pages programatically.
 
-````shell
-composer require elvandar/kazetenn
-````
 
-#What does it do ?
+## Installation
+You can use 
 
-Kazetenn provides a simple administration, a page and page content entity and a single view route.
+`composer require elvandar/kazetennarticles`
 
-You can access the administration from the ``admin/pages`` url, from there, you will be able to
-- create pages
-- add content to pages
+to install the bundle. 
 
-Pages can have a parent. 
+you will also need to configure `stof/doctrineextensionsbundle`:
 
-If the parent is null, the page url will be ``/{page_slug}``.
+in `config/packages/stof_doctrine_extensions.yaml`
 
-If not, it will be ``/{parent_slug}/{page_slug}``.
+```yaml
+stof_doctrine_extensions:
+    orm:
+        your_orm:
+            timestampable: true
+```
 
-Page_contents are ordered and will be displayed accordingly.
+## Usage
 
-Finally, you can specify a page and a page content template. If not, the default one will be used.
+The bundle provides a simple data model to handle the programatical creation of pages and some routes and views to display those pages.
+
+### configuration:
+
+in `config/packages/kazetenn-pages.yaml`:
+```yaml
+kazetenn-pages:
+    blog_url: ""
+```
+
+by default there is no prefix in front the diplay route, however, using this config you can add one.
+
+### the data model
+
+the budle articulates around 2 entities:
+
+##### Page
+
+which represent a page to display
+
+in a page, you can define:
+
+- a title
+- a slug
+- a parent
+- a list of content
+
+this will be used to handle the page display and url
+
+if the page have no parent, her url will be:
+
+`/{blog_url}/{slug}`
+
+if the page have a parent, her url will be:
+
+`/{blog_url}/{parent_slug}/{slug}`
+
+##### PageContent
+
+which handle the content of a page.
+
+in a pageContent, you will can define:
+
+- a content
+- a template
+- a parent
+- an order
+- a align (vertical or horizontal)
+- a list of content
+
+The content is a text/html. It will always be rendered using the `raw` twig function.
+
+The template allows you to define a twig template to personalize the rendering of the content without storing html in the database.
+
+A pageContent can reference multiple other pageContent (childs). Using the align property, you can define the way a content's childs will be rendered.
+Using this, you can easilly create a grid of content, allowing you to easily order you content. To ease this, a pageContent's content property can be null, allowing you to create an ordering pageContent.
+
+Finally, the order property allow you to choose the rendering order of a pageContent between him and same level contents.
+
+
+## License
+The pages bundle is under MIT liscence

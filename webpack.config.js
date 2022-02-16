@@ -1,3 +1,11 @@
+/*
+ * This file is part of the Kazetenn Articles Bundle
+ *
+ * (c) Gwilherm-Alan Turpin (elvandar.ysalys@protonmail.com) 2022.
+ *
+ * For more informations about the license and copyright, please view the LICENSE file at the root of the project.
+ */
+
 const Encore = require('@symfony/webpack-encore')
 
 if (!Encore.isRuntimeEnvironmentConfigured()) {
@@ -5,7 +13,7 @@ if (!Encore.isRuntimeEnvironmentConfigured()) {
 }
 
 Encore
-  .setOutputPath('src/Resources/public/')
+  .setOutputPath('Resources/public/')
   .setPublicPath('/')
   .setManifestKeyPrefix('bundles/kazetenn')
   .enableSourceMaps(false)
@@ -14,9 +22,7 @@ Encore
   .enableSassLoader()
 
   /* entries */
-  .addEntry('page_form', '/src/Resources/assets/js/admin/page_form.js')
-  .addStyleEntry('admin_style', '/src/Resources/assets/stylesheet/admin.scss')
-  .addStyleEntry('page_style', '/src/Resources/assets/stylesheet/page.scss')
+  .addStyleEntry('article_style', '/Resources/assets/stylesheet/content.scss')
 
   .cleanupOutputBeforeBuild()
   .enableBuildNotifications()
