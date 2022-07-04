@@ -1,0 +1,6 @@
+{
+  "bundles": {
+    "Kazetenn\\Admin\\KazetennAdmin::class": ["all"]
+  },
+  "aliases": ["kazetenn_admin"]
+}
