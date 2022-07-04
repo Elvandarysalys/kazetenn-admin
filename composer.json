@@ -51,18 +51,10 @@
   },
   "autoload": {
     "psr-4": {
-      "Kazetenn\\Core\\Admin\\": ""
+      "Kazetenn\\Admin\\": ""
     },
     "exclude-from-classmap": [
       "/Tests/"
     ]
-  },
-  "extra": {
-    "symfony": {
-      "endpoint": [
-        "https://api.github.com/repos/Elvandarysalys/recipes/contents/index.json",
-        "flex://defaults"
-      ]
-    }
   }
 }
