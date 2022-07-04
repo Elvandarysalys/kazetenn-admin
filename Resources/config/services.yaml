@@ -8,3 +8,14 @@ services:
         exclude:
             - '../../DependencyInjection/'
             - '../../Tests/'
+
+    Kazetenn\Admin\Service\MenuHandler:
+        arguments:
+            $adminPages: '%kazetenn_admin.pages%'
+            $authorizedRoles: '%kazetenn_admin.authorized_roles%'
+            $defaultTranslationDomain: '%kazetenn_admin.translation_domain%'
+            $menuEntries: '%kazetenn_admin.menu_entries%'
+
+    Kazetenn\Admin\Service\PageHandler:
+        calls:
+            - setContainer: ['@service_container']
