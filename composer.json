@@ -10,12 +10,12 @@
     }
   ],
   "require": {
-    "php": ">=7.4.6",
+    "php": "8.1.*",
     "composer/package-versions-deprecated": "1.11.99.4",
-    "doctrine/annotations": "^1.0",
-    "doctrine/doctrine-bundle": "^2.4",
-    "doctrine/doctrine-migrations-bundle": "^3.1",
-    "doctrine/orm": "^2.9",
+    "doctrine/annotations": "1.13.*",
+    "doctrine/doctrine-bundle": "2.7.*",
+    "doctrine/doctrine-migrations-bundle": "3.2.*",
+    "doctrine/orm": "2.12.*",
     "phpdocumentor/reflection-docblock": "^5.2",
     "sensio/framework-extra-bundle": "^6.1",
     "stof/doctrine-extensions-bundle": "^1.7",
@@ -57,7 +57,12 @@
       "/Tests/"
     ]
   },
-  "require-dev": {
-    "symfony/webpack-encore-bundle": "^1.13"
+  "extra": {
+    "symfony": {
+      "endpoint": [
+        "https://api.github.com/repos/Elvandarysalys/recipes/contents/index.json",
+        "flex://defaults"
+      ]
+    }
   }
 }
