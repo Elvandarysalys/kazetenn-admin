@@ -9,25 +9,29 @@ use Symfony\Component\HttpFoundation\Response;
 
 abstract class BaseAdminController extends AbstractController
 {
-    protected MenuHandler $menuHandler;
-
-    /**
-     * @param MenuHandler $menuHandler
-     */
-    public function __construct(MenuHandler $menuHandler)
+    public function __construct(protected MenuHandler $menuHandler)
     {
-        $this->menuHandler = $menuHandler;
     }
 
-    public function render(string $view, array $parameters = [], Response $response = null): Response
+    public function render(string $view, array $parameters = [], ?Response $response = null): Response
     {
         $user = $this->getUser();
         if ($this->menuHandler->isAuthorizedToView($user)) {
             $menu_list                                     = $this->menuHandler->buildMenuEntries($user);
+            ksort($menu_list[AdminMenu::ORIENTATION_HORIZONTAL]);
+            ksort($menu_list[AdminMenu::ORIENTATION_VERTICAL]);
             $parameters[AdminMenu::ORIENTATION_HORIZONTAL] = $menu_list[AdminMenu::ORIENTATION_HORIZONTAL];
             $parameters[AdminMenu::ORIENTATION_VERTICAL]   = $menu_list[AdminMenu::ORIENTATION_VERTICAL];
             return parent::render($view, $parameters, $response);
         }
         throw $this->createAccessDeniedException();
+    }
+
+    protected function checkAuthorisation(): bool
+    {
+        if (!$this->menuHandler->isAuthorizedToView($this->getUser())) {
+            throw $this->createAccessDeniedException('You do not have access to this page.');
+        }
+        return true;
     }
 }
