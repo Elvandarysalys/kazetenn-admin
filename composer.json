@@ -46,8 +46,7 @@
     "symfony/web-link": "6.2.*",
     "symfony/yaml": "6.2.*",
     "twig/extra-bundle": "3.4.*",
-    "twig/twig": "3.4.*",
-    "symfony/symfony": "^6.2"
+    "twig/twig": "3.4.*"
   },
   "autoload": {
     "psr-4": {
@@ -80,7 +79,8 @@
   },
   "scripts": {
     "auto-scripts": {
-
+      "cache:clear": "symfony-cmd",
+      "assets:install %PUBLIC_DIR%": "symfony-cmd"
     }
   }
 }
