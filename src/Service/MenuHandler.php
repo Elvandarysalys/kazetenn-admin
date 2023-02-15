@@ -76,7 +76,11 @@ class MenuHandler
             default:
             case AdminMenu::ROUTE_TYPE:
                 try {
-                    $url = $this->urlGenerator->generate($routeInfo);
+                    $routeArguments = [];
+                    if (array_key_exists(AdminMenu::MENU_TARGET_ARGUMENTS, $configData)){
+                        $routeArguments = $configData[AdminMenu::MENU_TARGET_ARGUMENTS];
+                    }
+                    $url = $this->urlGenerator->generate($routeInfo, $routeArguments);
                 } catch (RouteNotFoundException $e) {
                     $errorMessage = $e->getMessage();
                     $this->logger->warning("The selected route for $name cannot be generated with error: $errorMessage");

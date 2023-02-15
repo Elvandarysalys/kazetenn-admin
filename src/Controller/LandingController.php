@@ -2,6 +2,7 @@
 
 namespace Kazetenn\Admin\Controller;
 
+use Kazetenn\Admin\Controller\BaseAdminController;
 use Kazetenn\Admin\Service\PageHandler;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -19,6 +20,7 @@ class LandingController extends BaseAdminController
     public function pageAction(PageHandler $pageHandler, ?string $page = null): Response
     {
         $existingPages = $this->menuHandler->getAdminPages();
+
         if (null !== $page && array_key_exists($page, $existingPages) && $this->checkAuthorisation()) {
             return $this->render('@KazetennAdmin/admin_page.html.twig', [
                 'page' => $pageHandler->getPage($page)

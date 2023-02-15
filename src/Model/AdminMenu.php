@@ -14,6 +14,7 @@ class AdminMenu
     public const MENU_NAME               = 'name';
     public const MENU_ORDER              = 'order';
     public const MENU_TARGET             = 'target';
+    public const MENU_TARGET_ARGUMENTS   = 'target_arguments';
     public const MENU_DISPLAY_NAME       = 'display_name';
     public const MENU_TRANSLATION_DOMAIN = 'translation_domain';
     public const MENU_AUTHORIZED_ROLES   = 'authorized_roles';
