@@ -18,7 +18,7 @@ migrations/*
 src/Kernel.php
 
 config/*
-!config/routes.yaml
+!config/routes.php
 ###< symfony/framework-bundle ###
 
 ###> symfony/webpack-encore-bundle ###
