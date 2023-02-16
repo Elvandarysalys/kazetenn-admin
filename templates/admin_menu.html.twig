@@ -2,7 +2,11 @@
 
 <nav>
     <ul class="menu-label">
-        <li><a>{% trans %}kazetenn_admin.nav_size.expand_collapse{% endtrans %}</a></li>
+        <li>
+            <a>
+                {{ 'kazetenn_admin.nav_size.expand_collapse'|trans }}
+            </a>
+        </li>
     </ul>
     <ul>
         {% if vertical is defined and vertical is not empty %}

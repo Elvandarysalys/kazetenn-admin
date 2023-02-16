@@ -1,4 +1,4 @@
 {
-  "bundles/kazetenn/admin_style.css": "/admin_style.css",
-  "bundles/kazetenn/runtime.js": "/runtime.js"
+  "bundles/kazetennadmin/admin_style.css": "/admin_style.css",
+  "bundles/kazetennadmin/runtime.js": "/runtime.js"
 }
