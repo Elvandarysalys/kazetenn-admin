@@ -1,4 +1,8 @@
 {
-  "bundles/kazetennadmin/admin_style.css": "/admin_style.css",
-  "bundles/kazetennadmin/runtime.js": "/runtime.js"
+  "bundles/kazetennadmin/admin_sidebar.js": "bundles/kazetennadmin/admin_sidebar.js",
+  "bundles/kazetennadmin/icons.js": "bundles/kazetennadmin/icons.js",
+  "bundles/kazetennadmin/admin_style.css": "bundles/kazetennadmin/admin_style.css",
+  "bundles/kazetennadmin/runtime.js": "bundles/kazetennadmin/runtime.js",
+  "bundles/kazetennadmin/255.js": "bundles/kazetennadmin/255.js",
+  "bundles/kazetennadmin/867.js": "bundles/kazetennadmin/867.js"
 }

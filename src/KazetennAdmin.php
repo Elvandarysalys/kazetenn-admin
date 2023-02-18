@@ -40,7 +40,7 @@ class KazetennAdmin extends AbstractBundle
     /**
      * @return ArrayNodeDefinition|NodeBuilder|NodeDefinition|NodeParentInterface|VariableNodeDefinition|null
      */
-    private function addMenuEntriesNode()
+    private function addMenuEntriesNode(): ArrayNodeDefinition|VariableNodeDefinition|NodeDefinition|NodeBuilder|NodeParentInterface|null
     {
         $treeBuilder = new TreeBuilder('menu_entries', 'array');
 
@@ -59,6 +59,10 @@ class KazetennAdmin extends AbstractBundle
                            ->end()
                            ->scalarNode(AdminMenu::MENU_DISPLAY_NAME)
                            ->defaultValue('')
+                           ->info('Define the displayed name of the menu entry. This value will be translated.')
+                           ->end()
+                           ->scalarNode(AdminMenu::MENU_DISPLAY_ICON)
+                           ->defaultValue('home')
                            ->info('Define the displayed name of the menu entry. This value will be translated.')
                            ->end()
                            ->scalarNode(AdminMenu::MENU_TRANSLATION_DOMAIN)
@@ -105,6 +109,10 @@ class KazetennAdmin extends AbstractBundle
                            ->end()
                            ->scalarNode(AdminMenu::MENU_DISPLAY_NAME)
                            ->defaultValue('')
+                           ->info('Define the displayed name of the menu entry. This value will be translated.')
+                           ->end()
+                           ->scalarNode(AdminMenu::MENU_DISPLAY_ICON)
+                           ->defaultValue('home')
                            ->info('Define the displayed name of the menu entry. This value will be translated.')
                            ->end()
                            ->scalarNode(AdminMenu::MENU_TRANSLATION_DOMAIN)

@@ -16,7 +16,7 @@ if (!Encore.isRuntimeEnvironmentConfigured()) {
 
 Encore
   .setOutputPath('public/')
-  .setPublicPath('/')
+  .setPublicPath('bundles/kazetennadmin')
   .setManifestKeyPrefix('bundles/kazetennadmin')
   .enableSourceMaps(false)
   .enableVersioning(false)
@@ -25,6 +25,8 @@ Encore
 
   /* entries */
   .addStyleEntry('admin_style', '/assets/stylesheet/admin.scss')
+  .addEntry('admin_sidebar', '/assets/js/sidebar.js')
+  .addEntry('icons', '/assets/js/icons.js')
 
   // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
   .enableStimulusBridge('./assets/controllers.json')

@@ -15,8 +15,9 @@
         {% endblock %}
 
         {% block javascripts %}
+            {{ encore_entry_script_tags('admin_sidebar', null, 'kazetenn_admin') }}
+            {{ encore_entry_script_tags('icons', null, 'kazetenn_admin') }}
         {% endblock %}
-
     </head>
 
     <body class="page-columns">
@@ -43,21 +44,23 @@
 
         <section id="page-container" class="section admin-page-container">
             <div id="page-content" class="columns container is-full admin-page-content">
-                <div class="column is-2 aside_container">
-                    <aside id="nav-side" class="menu is-hidden-mobile ">
+
+                <div id="sidebar" class="column sidebar-2 aside_container sidebar is-fixed-top">
+                    <aside class="menu is-hidden-mobile">
                         {% block nav_side %}
                             {{ include('@KazetennAdmin/admin_menu.html.twig') }}
                         {% endblock %}
                     </aside>
                 </div>
 
-                <div class="column is-10 admin-body_container">
+                <div id="main" class="column is-11 admin-body_container">
                     <span class="is-hidden">{% block body_hidden_infos %}{% endblock %}</span>
 
                     <div id="body" class="section">
                         {% block body %}{% endblock %}
                     </div>
                 </div>
+
             </div>
         </section>
 
